@@ -1,0 +1,3 @@
+select *
+from STUDENT
+where STUDENT_ID not in (select distinct STUDENT_ID from BILL);
