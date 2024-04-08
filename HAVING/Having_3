@@ -1,0 +1,6 @@
+select b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+from BILL a join STUDENT b on a.STUDENT_ID = b.STUDENT_ID
+group by a.PAYMENT, b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+having a.PAYMENT = (select MAX(PAYMENT) from BILL )
