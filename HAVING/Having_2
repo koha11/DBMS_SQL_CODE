@@ -1,0 +1,5 @@
+select CLASS_ID, count(STUDENT_ID) as SL from RESULT 
+group by CLASS_ID
+having count(STUDENT_ID) >= ALL 
+(select count(STUDENT_ID) as SL from RESULT 
+group by CLASS_ID)
