@@ -1,0 +1,40 @@
+-- NOT IN / LEFT / RIGHT JOIN 
+
+-- Hoc sinh chua dong tien
+select *
+from STUDENT
+where STUDENT_ID not in (select distinct STUDENT_ID from BILL);
+
+-- Thong tin hoa don va cac hoc sinh neu co
+SELECT a.BILL_ID, a.STUDENT_ID, a.DATE_P, a.METHOD_P, a.PAYMENT,
+b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS, b.ST_EMAIL, b.ST_DATE
+FROM BILL a
+LEFT JOIN STUDENT b ON a.STUDENT_ID = b.STUDENT_ID;
+
+
+-- Lấy thông tin giáo viên và thong tin dạy các lớp học (nếu có)
+SELECT a.TEACHER_ID, a.TR_NAME, a.TR_DEGREE, c.CLASS_ID, c.COURSE_ID, c.CLASSROOM
+FROM TEACHER a
+RIGHT JOIN CLASS c ON a.TEACHER_ID = c.TEACHER_ID;
+
+-- Hoc sinh chua co ket qua
+
+select * from STUDENT where STUDENT_ID 
+not in (select STUDENT_ID from RESULT)
+
+-- Danh sach lop hoc khong mo trong thang 6
+select * from CLASS
+where CLASS_ID not in (select CLASS_ID from CLASS_DETAIL 
+where MONTH(DATE_START) = 6)
+
+-- Giao vien khong day lop hoc trong nam 2023
+select * from TEACHER 
+where TEACHER_ID not in (select b.TEACHER_ID
+from TEACHER a join CLASS b on a.TEACHER_ID = b.TEACHER_ID
+join CLASS_DETAIL c on b.CLASS_ID = c.CLASS_ID where YEAR(c.DATE_START) = 2023
+and YEAR(c.DATE_END) = 2023);
+
+-- Lay thong tin cac lop hoc khong co ket qua 
+SELECT C.CLASS_ID
+FROM CLASS C
+WHERE C.CLASS_ID NOT IN (SELECT DISTINCT CLASS_ID FROM RESULT);
