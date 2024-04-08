@@ -1,0 +1,5 @@
+select * from TEACHER 
+where TEACHER_ID not in (select b.TEACHER_ID
+from TEACHER a join CLASS b on a.TEACHER_ID = b.TEACHER_ID
+join CLASS_DETAIL c on b.CLASS_ID = c.CLASS_ID where YEAR(c.DATE_START) = 2023
+and YEAR(c.DATE_END) = 2023);

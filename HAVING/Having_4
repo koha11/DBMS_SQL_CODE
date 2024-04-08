@@ -1,0 +1,7 @@
+select b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+from STUDENT b join RESULT a on a.STUDENT_ID = b.STUDENT_ID
+group by a.OVERALL, b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+having a.OVERALL = (select OVERALL from RESULT where OVERALL >= 8.5
+)
