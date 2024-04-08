@@ -1,0 +1,52 @@
+-- HAVING
+
+-- Hoc sinh tham gia 2 lop hoc tro len
+
+SELECT b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_EMAIL, b.ST_DATE,
+COUNT(a.CLASS_ID) AS SO_LOP_DA_HOC
+FROM RESULT a join STUDENT b on a.STUDENT_ID = b.STUDENT_ID
+GROUP BY a.STUDENT_ID, b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_EMAIL, b.ST_DATE
+HAVING COUNT(a.CLASS_ID) >= 2;
+
+
+-- Tim lop co nhieu hoc sinh nhat
+
+select CLASS_ID, count(STUDENT_ID) as SL from RESULT 
+group by CLASS_ID
+having count(STUDENT_ID) >= ALL 
+(select count(STUDENT_ID) as SL from RESULT 
+group by CLASS_ID)
+
+
+-- Hoc sinh dong tien nhieu nhat
+
+select b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+from BILL a join STUDENT b on a.STUDENT_ID = b.STUDENT_ID
+group by a.PAYMENT, b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+having a.PAYMENT = (select MAX(PAYMENT) from BILL )
+
+-- Hoc sinh co overall >= 8.5
+
+select b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+from STUDENT b join RESULT a on a.STUDENT_ID = b.STUDENT_ID
+group by a.OVERALL, b.STUDENT_ID, b.ST_NAME, b.ST_GENDER, b.ST_PHONE, b.ST_ADDRESS,
+b.ST_DATE, b.ST_EMAIL
+having a.OVERALL = (select OVERALL from RESULT where OVERALL >= 8.5
+)
+
+-- Giao vien co overall cao nhat
+
+select TEACHER_ID, TR_NAME, TR_GENDER, 
+TR_DATE, TR_PHONE, TR_NATION, TR_EMAIL, 
+TR_ADDRESS, TR_DEGREE, IELTS_OVERALL
+from TEACHER 
+group by IELTS_OVERALL, TEACHER_ID, TR_NAME, TR_GENDER, 
+TR_DATE, TR_PHONE, TR_NATION, TR_EMAIL, 
+TR_ADDRESS, TR_DEGREE
+having IELTS_OVERALL = 
+(select MAX(IELTS_OVERALL) from TEACHER);
