@@ -1,0 +1,3 @@
+select * from CLASS
+where CLASS_ID not in (select CLASS_ID from CLASS_DETAIL 
+where MONTH(DATE_START) = 6)
