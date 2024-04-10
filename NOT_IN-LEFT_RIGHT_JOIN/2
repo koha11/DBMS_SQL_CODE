@@ -1,6 +1,13 @@
-SELECT a.BILL_ID, a.DATE_P as NgayDongTien, a.METHOD_P as PhuongThucDong, a.PAYMENT as SoTien, 
-a.STUDENT_ID, b.ST_NAME as TenHS, b.ST_GENDER as GioiTinh, b.ST_DATE as NgaySinh
-
-FROM STUDENT b
-
-LEFT JOIN BILL a ON a.STUDENT_ID = b.STUDENT_ID;
+SELECT 
+    a.BILL_ID, 
+    a.DATE_P as NgayDongTien, 
+    a.METHOD_P as PhuongThucDong, 
+    a.PAYMENT as SoTien, 
+    a.STUDENT_ID, 
+    b.ST_NAME as TenHS, 
+    b.ST_GENDER as GioiTinh, 
+    b.ST_DATE as NgaySinh
+FROM 
+    STUDENT b
+LEFT JOIN 
+    BILL a ON a.STUDENT_ID = b.STUDENT_ID;
