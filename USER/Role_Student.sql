@@ -1,6 +1,8 @@
 - Tạo role cho sinh viên
 CREATE ROLE student_role;
 
+GRANT student_role to ST01;
+
 -- Cấp quyền truy cập vào bảng TIMETABLE
 GRANT SELECT ON TIMETABLE TO student_role;
 
