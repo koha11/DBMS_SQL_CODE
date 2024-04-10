@@ -1,5 +1,15 @@
-select * from TEACHER 
-where TEACHER_ID not in (select distinct b.TEACHER_ID
-from TEACHER a join CLASS b on a.TEACHER_ID = b.TEACHER_ID
-join CLASS_DETAIL c on b.CLASS_ID = c.CLASS_ID where YEAR(c.DATE_START) = 2024
-and YEAR(c.DATE_END) = 2024 and MONTH(DATE_START) between 1 and 3 and MONTH(DATE_END) between 1 and 3);
+SELECT 
+    *
+FROM 
+    TEACHER 
+WHERE 
+    TEACHER_ID not in (select distinct b.TEACHER_ID
+    FROM 
+        TEACHER a 
+        JOIN CLASS b ON a.TEACHER_ID = b.TEACHER_ID
+        JOIN CLASS_DETAIL c ON b.CLASS_ID = c.CLASS_ID 
+        WHERE
+            YEAR(c.DATE_START) = 2024
+            AND YEAR(c.DATE_END) = 2024 
+            AND MONTH(DATE_START) BETWEEN 1 and 3 
+            AND MONTH(DATE_END) BETWEEN 1 and 3);
