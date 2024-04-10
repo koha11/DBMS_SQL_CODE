@@ -1,0 +1,17 @@
+-- Tạo user Student
+CREATE USER student WITH PASSWORD = '123';
+
+
+-- Cấp quyền truy cập vào bảng TIMETABLE
+GRANT SELECT ON TIMETABLE TO student;
+
+-- Cấp quyền truy cập vào các cột trong bảng CLASS_DETAIL và CLASS
+GRANT SELECT ON CLASS_DETAIL TO student;
+
+GRANT SELECT ON CLASS TO student;
+
+-- Cấp quyền truy cập vào các cột trong bảng STUDENT
+GRANT SELECT ON STUDENT TO student;
+
+-- Cấp quyền truy cập vào các cột trong bảng COURSE
+GRANT SELECT ON COURSE TO student;
