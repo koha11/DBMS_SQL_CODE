@@ -1,3 +1,15 @@
-select *
-from STUDENT
-where STUDENT_ID not in (select distinct STUDENT_ID from BILL);
+SELECT 
+    A.STUDENT_ID,
+    A.ST_NAME
+FROM 
+    STUDENT A
+WHERE 
+    A.STUDENT_ID NOT IN (
+        SELECT DISTINCT B.STUDENT_ID
+        FROM 
+            BILL B
+            JOIN STUDENT C ON C.STUDENT_ID = B.STUDENT_ID JOIN RESULT D on C.STUDENT_ID = D.STUDENT_ID
+			JOIN CLASS E on D.CLASS_ID = E.CLASS_ID JOIN CLASS_DETAIL F on E.CLASS_ID = F.CLASS_ID
+        WHERE 
+            F.DATE_START <= B.DATE_P
+);
