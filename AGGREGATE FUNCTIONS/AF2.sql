@@ -1,0 +1,22 @@
+SELECT 
+    ST.STUDENT_ID, 
+    ST.ST_NAME, 
+    ST.ST_DATE, 
+    DATEDIFF(YEAR, ST.ST_DATE, GETDATE()) - 
+    CASE 
+        WHEN RIGHT(CONVERT(VARCHAR(10), GETDATE(), 105), 5) < RIGHT(CONVERT(VARCHAR(10), ST.ST_DATE, 105), 5) THEN 1 
+        ELSE 0 
+    END AS AGE
+FROM 
+    STUDENT ST
+WHERE 
+    DATEDIFF(YEAR, ST.ST_DATE, GETDATE()) = (
+        SELECT 
+            MIN(DATEDIFF(YEAR, ST_DATE, GETDATE()) - 
+            CASE 
+                WHEN RIGHT(CONVERT(VARCHAR(10), GETDATE(), 105), 5) < RIGHT(CONVERT(VARCHAR(10), ST_DATE, 105), 5) THEN 1 
+                ELSE 0 
+            END)
+        FROM 
+            STUDENT
+    );
