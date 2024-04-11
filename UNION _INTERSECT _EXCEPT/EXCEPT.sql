@@ -1,0 +1,19 @@
+SELECT ST_NAME
+FROM STUDENT
+WHERE STUDENT_ID IN (
+    SELECT STUDENT_ID
+    FROM RESULT
+    WHERE CLASS_ID IN (
+        SELECT CLASS_ID
+        FROM RESULT
+        WHERE STUDENT_ID = (
+            SELECT STUDENT_ID
+            FROM STUDENT
+            WHERE ST_NAME = 'Sophia Wilson'
+        )
+    )
+)
+EXCEPT
+SELECT ST_NAME
+FROM STUDENT
+WHERE ST_NAME = 'Sophia Wilson';
