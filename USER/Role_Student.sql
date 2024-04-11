@@ -7,8 +7,6 @@ CREATE USER st0 for login st0;
 -- Tạo role cho sinh viên
 CREATE ROLE student_role;
 
-GRANT student_role to st0;
-
 -- Cấp quyền truy cập vào bảng TIMETABLE
 GRANT SELECT ON TIMETABLE TO student_role;
 
@@ -24,3 +22,7 @@ GRANT SELECT ON COURSE TO student_role;
 
 -- Cấp quyền truy cập vào các cột điểm trong bảng RESULT
 GRANT SELECT ON RESULT TO student_role;
+
+-- Gan role
+alter role student_role add member st0;
+
