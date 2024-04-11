@@ -1,3 +1,9 @@
+-- Tạo login
+create login 
+
+-- Tạo user Student
+CREATE USER st0;
+
 -- Tạo role cho sinh viên
 CREATE ROLE student_role;
 
