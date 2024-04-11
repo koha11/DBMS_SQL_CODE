@@ -1,5 +1,5 @@
 -- Tạo login
-create login 
+create login st0 with password = '1';
 
 -- Tạo user Student
 CREATE USER st0;
