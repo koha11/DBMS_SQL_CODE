@@ -1,4 +1,4 @@
-- Tạo role cho sinh viên
+-- Tạo role cho sinh viên
 CREATE ROLE student_role;
 
 GRANT student_role to ST01;
