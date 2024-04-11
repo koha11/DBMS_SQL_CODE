@@ -2,12 +2,12 @@
 create login st0 with password = '1';
 
 -- Tạo user Student
-CREATE USER st0;
+CREATE USER st0 for login st0;
 
 -- Tạo role cho sinh viên
 CREATE ROLE student_role;
 
-GRANT student_role to ST01;
+GRANT student_role to st0;
 
 -- Cấp quyền truy cập vào bảng TIMETABLE
 GRANT SELECT ON TIMETABLE TO student_role;
