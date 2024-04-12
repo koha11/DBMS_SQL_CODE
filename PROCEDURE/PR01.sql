@@ -11,3 +11,5 @@ AS BEGIN
 		SET @SQL = @SQL + ' ALTER ROLE teacher ADD MEMBER ' + @UID
 	exec(@SQL)
 END
+
+-- khoa's note: chưa add vào azure
