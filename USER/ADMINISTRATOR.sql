@@ -1,35 +1,11 @@
---Tạo login
-CREATE LOGIN ADMINISTRATOR WITH PASSWORD = '2';
+USE master
+GRANT ALTER ANY LOGIN TO admin1234 -- Gán quyền tạo login
+CREATE LOGIN admin123 WITH PASSWORD = 'Admin12345@';
 
---Tạo user
-CREATE USER ADMINISTRATOR FOR LOGIN ADMINISTRATOR;
+USE QLTTTA
+CREATE USER admin1234 FOR LOGIN admin123;
+GRANT SELECT, INSERT, UPDATE, DELETE, ALTER, EXECUTE, VIEW DEFINITION ON SCHEMA::dbo TO admin123 -- Gán toàn bộ quyền trong dbo
+GRANT ALTER ANY USER TO admin123 -- Gán quyền tạo/sửa user
+GRANT ALTER ANY ROLE TO admin123 -- Gán quyền tạo/sửa role
 
---Tạo ROLE
-CREATE ROLE DatabaseAdmin;
 
---Cấp quyền cho ROLE trong bảng TEACHER
-GRANT SELECT, INSERT, UPDATE, DELETE ON TEACHER TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng STUDENT
-GRANT SELECT, INSERT, UPDATE, DELETE ON STUDENT TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng COURSE
-GRANT SELECT, INSERT, UPDATE, DELETE ON COURSE TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng BILL
-GRANT SELECT, INSERT, UPDATE, DELETE ON BILL TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng CLASS
-GRANT SELECT, INSERT, UPDATE, DELETE ON CLASS TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng TIMETABLE
-GRANT SELECT, INSERT, UPDATE, DELETE ON TIMETABLE TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng RESULT
-GRANT SELECT, INSERT, UPDATE, DELETE ON RESULT TO DatabaseAdmin;
-
---Cấp quyền cho ROLE trong bảng CLASS_DETAIL
-GRANT SELECT, INSERT, UPDATE, DELETE ON CLASS_DETAIL TO DatabaseAdmin;
-
---Cấp ROLE cho user
-ALTER ROLE DatabaseAdmin ADD MEMBER ADMINISTRATOR;
