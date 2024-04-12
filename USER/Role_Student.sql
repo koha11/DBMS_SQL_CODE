@@ -1,28 +1,15 @@
--- Tạo login
-create login st0 with password = '1';
 
--- Tạo user Student
-CREATE USER st0 for login st0;
+CREATE LOGIN ST000001 WITH PASSWORD '1'
+CREATE USER ST000001 FOR LOGIN ST000001;
 
--- Tạo role cho sinh viên
-CREATE ROLE student_role;
+CREATE ROLE student;
+GRANT SELECT ON TIMETABLE TO student;
+GRANT SELECT ON CLASS_DETAIL TO student;
+GRANT SELECT ON CLASS TO student;
+GRANT SELECT ON STUDENT TO student;
+GRANT SELECT ON COURSE TO student;
+GRANT SELECT ON RESULT TO student;
+GRANT SELECT ON STUDENT_ACCOUNT TO student;
 
--- Cấp quyền truy cập vào bảng TIMETABLE
-GRANT SELECT ON TIMETABLE TO student_role;
-
--- Cấp quyền truy cập vào các cột trong bảng CLASS_DETAIL và CLASS
-GRANT SELECT ON CLASS_DETAIL TO student_role;
-GRANT SELECT ON CLASS TO student_role;
-
--- Cấp quyền truy cập vào các cột trong bảng STUDENT
-GRANT SELECT ON STUDENT TO student_role;
-
--- Cấp quyền truy cập vào các cột trong bảng COURSE
-GRANT SELECT ON COURSE TO student_role;
-
--- Cấp quyền truy cập vào các cột điểm trong bảng RESULT
-GRANT SELECT ON RESULT TO student_role;
-
--- Gan role
-alter role student_role add member st0;
+ALTER ROLE student ADD MEMBER ST000001;
 
