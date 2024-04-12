@@ -12,4 +12,4 @@ AS BEGIN
 	exec(@SQL)
 END
 
--- khoa's note: chưa add vào azure
+-- khoa's note: chưa add vào azure 
