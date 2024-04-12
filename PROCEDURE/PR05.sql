@@ -12,7 +12,7 @@ RETURNS @INFORMATION TABLE
     Student_Address NVARCHAR(50),
     Student_Email NVARCHAR(50),
     Timetable_Weeklyday SMALLINT,
-    Timetable_Dayperiod TIME
+    Timetable_Dayperiod SMALLINT
 )
 AS BEGIN
     INSERT INTO @INFORMATION
