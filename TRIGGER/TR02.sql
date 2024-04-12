@@ -15,4 +15,4 @@ AS BEGIN
 	FROM inserted;
 END
 
---khoa's note (ko ảnh hưởng): chưa add vào azure
+--khoa's note (ko ảnh hưởng): chưa add vào azure 
