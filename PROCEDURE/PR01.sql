@@ -6,7 +6,7 @@ AS BEGIN
 	SET @SQL = 'use master; CREATE LOGIN ' + @UID +' WITH PASSWORD = '''  + @PWD + ''';' + 
 				'use QLTTTA; CREATE USER ' + @UID + ' FOR LOGIN ' + @UID; 
 	IF (@UID LIKE 'ST%')
-		SET @SQL = @SQL + ' ALTER ROLE student_role ADD MEMBER ' + @UID
+		SET @SQL = @SQL + ' ALTER ROLE student ADD MEMBER ' + @UID
 	ELSE 
 		SET @SQL = @SQL + ' ALTER ROLE teacher ADD MEMBER ' + @UID
 	exec(@SQL)
