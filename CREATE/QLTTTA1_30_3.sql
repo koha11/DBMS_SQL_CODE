@@ -86,3 +86,19 @@ CREATE TABLE CLASS_DETAIL
 	LESSONS SMALLINT NOT NULL,
 	CONSTRAINT FK_CLASS_DETAIL_CLASS FOREIGN KEY (CLASS_ID) REFERENCES CLASS(CLASS_ID),
 )
+
+create table STUDENT_ACCOUNT
+(
+	UID varchar(10) not null primary key foreign key references STUDENT(STUDENT_ID),
+	PWD varchar(30) not null,
+	CREATE_DATE datetime not null,
+	isActive bit not null
+)
+
+create table TEACHER_ACCOUNT
+(
+	UID varchar(10) not null primary key foreign key references TEACHER(TEACHER_ID),
+	PWD varchar(30) not null,
+	CREATE_DATE datetime not null,
+	isActive bit not null
+)
