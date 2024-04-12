@@ -14,3 +14,5 @@ AS BEGIN
 	SELECT STUDENT_ID,'1' PWD, GETDATE() CREATED_DATE, 0 IS_ACTIVE
 	FROM inserted;
 END
+
+--khoa's note (ko ảnh hưởng): chưa add vào azure
