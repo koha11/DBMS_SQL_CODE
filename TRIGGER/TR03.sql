@@ -61,7 +61,7 @@ AS BEGIN
 					SET @AVG = CEILING(@AVG)
 				ELSE
 					SET @AVG = CEILING(@AVG) - 0.5
-           	END
+           		END
 			ELSE
 			IF @HIEU < 0.25
 				SET @AVG = FLOOR(@AVG)
