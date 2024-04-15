@@ -12,4 +12,4 @@ BEGIN
 	WHERE DATEDIFF(DAY,DATE_END,GETDATE()) < 0 AND A.STUDENT_ID = @ID
 END
 -- Cái này trên azure đang lầm ngược lại chỗ đk để có thể thêm đc bill 
--- tại vì trên đó toàn lớp đã kết thúc mà HS chưa đóng tiền
+-- tại vì trên đó toàn lớp đã kết thúc mà HS chưa đóng tiền 
