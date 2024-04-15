@@ -43,7 +43,7 @@ AS BEGIN
 		ELSE IF(SELECT DATEDIFF(DAY,DATE_END,GETDATE()) DAY --Nếu lớp đó chưa kết thúc thì ko đc nhập điểm
 			FROM inserted A
 			JOIN CLASS_DETAIL B ON A.CLASS_ID = B.CLASS_ID) <= 0
-		BEGIN
+		BEGIN 
 			PRINT('LOP HOC CHUA KET THUC')
 			ROLLBACK TRAN
 		END
