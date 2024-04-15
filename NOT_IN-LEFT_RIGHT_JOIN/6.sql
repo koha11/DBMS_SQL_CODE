@@ -10,4 +10,4 @@ WHERE
         JOIN CLASS_DETAIL c ON b.CLASS_ID = c.CLASS_ID 
         WHERE
             YEAR(c.DATE_START) = 2024 
-            AND MONTH(DATE_START) IN 1 and 3;
+            AND MONTH(DATE_START) BETWEEN 1 and 3);
